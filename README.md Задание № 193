@@ -1,0 +1,35 @@
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Program193
+    {
+    internal class Program
+    {
+        static void Main()
+        {
+            Console.Write("Код датчика (M—движение, D—дверь, S—дым, W—протечка): ");
+            string  sensor = Console.ReadLine()?.Trim().ToUpper();
+            if (string.IsNullOrEmpty(sensor) || sensor.Length != 1)
+            {
+                Console.WriteLine("Ошибка.");
+                return;
+            }
+
+            string threat;
+            switch (sensor[0])
+            {
+                case 'M': threat = "Обнаружено движение в охраняемой зоне."; break;
+                case 'D': threat = "Срабатывание датчика открытия двери/окна."; break;
+                case 'S': threat = "Зафиксировано задымление, возможна пожарная угроза."; break;
+                case 'W': threat = "Обнаружена протечка воды, риск затопления."; break;
+                default:
+                    Console.WriteLine("Неизвестный датчик.");
+                    return;
+            }
+            Console.WriteLine(threat);
+        }
+    }
+    }
